@@ -4,7 +4,9 @@ import React from 'react';
 
 const MyPosts = (props) => {
 
-    let postsElements = props.posts.map( p => <Post message={p.message} likes={p.likesCount}/>)
+    let state = props.profilePage;
+
+    let postsElements = state.posts.map( p => <Post message={p.message} likes={p.likesCount}/>)
 
     //создаем ссылку на элемент; в <textarea ref={newPostElement}></textarea> - привязываем
     let newPostElement = React.createRef();
@@ -15,7 +17,7 @@ const MyPosts = (props) => {
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        props.onPostChange(text);
     };
 
     return (

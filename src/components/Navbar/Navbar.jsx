@@ -1,5 +1,4 @@
 import s from './Navbar.module.css';
-//s - название объекта класса
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {

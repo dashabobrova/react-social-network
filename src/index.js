@@ -6,27 +6,21 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import store from './redux/redux-store';
-import { Provider } from './storeContext';
+import { Provider } from 'react-redux';
+
 /* addPost('Samuraji'); */
 
-let rerenderEntireTree  = () => {
-  ReactDOM.render(
-    <React.StrictMode>
-       <BrowserRouter>
-        <Provider store={store}>
-            <App />
-          </Provider>
-      </BrowserRouter>
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
-};
 
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-rerenderEntireTree();
-
-store.subscribe(() => { // анонимная, чтобы передавать state при каждом перерендере
-  rerenderEntireTree();
-});
 
 reportWebVitals();
