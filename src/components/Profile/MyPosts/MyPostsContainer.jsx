@@ -2,6 +2,7 @@ import { addPostActionCreator } from "../../../redux/profilePage-reducer.js"
 import { updateNewPostChangeActionCreator } from "../../../redux/profilePage-reducer.js";
 import MyPosts from './MyPosts';
 import { connect } from "react-redux";
+import { compose } from "redux";
 
 let mapStateToProps = (state) => {
     return {
@@ -22,6 +23,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
-
-export default MyPostsContainer;
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps)
+)(MyPosts)

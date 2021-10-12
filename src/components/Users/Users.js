@@ -2,7 +2,6 @@ import React from "react";
 import s from './Users.module.css';
 import avaPlaceholder from '../../img/ava.jpg';
 import { NavLink } from "react-router-dom";
-import * as axios from "axios";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount/ props.pageSize);
@@ -31,40 +30,15 @@ let Users = (props) => {
                 </div>
                 <div>
                     {
-                        u.fallowed 
-                        ? <button onClick={() => {
-                            
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                withCredentials: true,
-                                headers: {
-                                    "API-KEY": "52db46d3-a6ab-4df4-9548-c8459fc02b06"
-                                }
-                            })
-                                .then(response => {
-                                    if(response.data.resultCode === 0){
-                                        props.unfollow(u.id)
-                                    }
-                                });
-
-                        
-                        }}>unFollow</button > 
+                        u.followed 
+                        ? <button disabled={props.followingInProgress.some(id => id === u.id)} 
+                                onClick={() => {props.unfollow(u.id)}}>
+                            unFollow</button > 
 
                     
-                        : <button onClick={() => {
-                            
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                withCredentials: true,
-                                headers: {
-                                    "API-KEY": "52db46d3-a6ab-4df4-9548-c8459fc02b06"
-                                }
-                            })
-                                .then(response => {
-                                    if(response.data.resultCode === 0){
-                                        props.follow(u.id)
-                                    }
-                                });
-
-                        }}>follow</button>
+                        : <button disabled={props.followingInProgress.some(id => id === u.id)} 
+                                    onClick={() => {props.follow(u.id)}}>
+                            follow</button>
                     }
                 
                 </div>
