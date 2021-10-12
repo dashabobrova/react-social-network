@@ -1,3 +1,9 @@
 .descroptionBlock {
     padding: 10px;
 }
+
+.ava_img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}

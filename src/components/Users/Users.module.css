@@ -1,0 +1,13 @@
+.ava_img{
+    height:  150px;
+    width: 150px;
+}
+
+.chosenPage{
+    font-weight: 900;
+}
+
+.test {
+    display: flex;
+    flex-wrap: wrap;
+}
